@@ -28,6 +28,7 @@ gem 'devise', '~> 3.4' # Authentication
 
 gem 'sidekiq' # Background job processing queue
 gem 'sinatra', :require => nil # Required for sidekiq web UI
+gem 'sidekiq-failures' # Track sidekiq failures
 
 gem 'roadie-rails' # Inline styles for emails
 
@@ -41,20 +42,23 @@ gem 'puma'
 gem 'mina'
 gem 'mina-puma', :require => false
 gem 'mina-sidekiq', :require => false
+gem 'mina-scp', :require => false
+gem 'mina-newrelic', :require => false
 
 gem 'dotenv-rails'
 
 # Skylight for performance monitoring
 gem 'skylight'
 
-# Airbrake/Errbit for error monitoring
-gem 'airbrake'
+# New Relic application monitoring
+gem 'newrelic_rpm'
 
 # Pagination
 gem 'kaminari'
 
-# Logging in production
-gem 'syslogger', '~> 1.6.0'
+# syslog logging with lograge
+# gem 'syslogger', '~> 1.6.0'
+# gem 'lograge', '~> 0.3.1'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
@@ -79,6 +83,8 @@ group :test do
   gem 'webmock'
   gem 'shoulda-matchers', require: false
   gem 'timecop'
+  gem 'coveralls', require: false
+  gem 'json-schema-rspec'
 end
 
 group :developement do
